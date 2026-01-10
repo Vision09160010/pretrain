@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 CUDA_VISIBLE_DEVICES=0 swift rlhf \
     --rlhf_type grpo \
-    --model /root/.cache.bak/modelscope/hub/models/Qwen/Qwen3-0.6B-Base \
+    --model /root/.cache/modelscope/hub/models/Qwen/Qwen3-0.6B-Base \
     --dataset data.jsonl \
     --external_reward_funcs reward.py \
     --reward_funcs accuracy format \
@@ -73,5 +73,39 @@ CUDA_VISIBLE_DEVICES=0 swift rlhf \
     --max_prompt_length 512 \
     --per_device_train_batch_size 1 \
     --learning_rate 1e-6 \
-    --gradient_accumulation_steps 2 \
+    --gradient_accumulation_steps 8 \
     --output_dir output/grpo_test
+
+
+
+CUDA_VISIBLE_DEVICES=0 swift rlhf \
+    --rlhf_type grpo \
+    --model /root/.cache/modelscope/hub/models/Qwen/Qwen3-0.6B-Base \
+    --dataset data.jsonl \
+    --reward_funcs my_accuracy format \
+    --num_generations 8 \
+    --max_completion_length 1024 \
+    --per_device_train_batch_size 1 \
+    --learning_rate 1e-6 \
+    --gradient_accumulation_steps 8 \
+    --output_dir output/grpo_test
+
+
+CUDA_VISIBLE_DEVICES=0 swift rlhf \
+  --rlhf_type grpo \
+  --model /root/.cache/modelscope/hub/models/Qwen/Qwen3-0.6B-Base \
+  --dataset data.jsonl \
+  --reward_funcs accuracy \
+  --num_generations 8 \
+  --max_completion_length 256 \
+  --per_device_train_batch_size 1 \
+  --learning_rate 1e-6 \
+  --gradient_accumulation_steps 8 \
+  --deepspeed ds_config.json \
+  --output_dir output/grpo_test
+
+
+
+CUDA_VISIBLE_DEVICES=0 swift rlhf
+--rlhf_type grpo
+--model /root/.cache/modelscope/hub/models/Qwen/Qwen3-0.6B-Base   --dataset data.jsonl   --reward_funcs accuracy   --num_generations 8   --max_completion_length 256   --per_device_train_batch_size 1   --learning_rate 1e-6   --gradient_accumulation_steps 8   --output_dir output/grpo_test
