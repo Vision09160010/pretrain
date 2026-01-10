@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 CUDA_VISIBLE_DEVICES=0 swift rlhf \
     --rlhf_type grpo \
-    --model /root/.cache/modelscope/hub/models/Qwen/Qwen3-0.6B-Base \
+    --model /root/.cache.bak/modelscope/hub/models/Qwen/Qwen3-0.6B-Base \
     --dataset data.jsonl \
     --external_reward_funcs reward.py \
     --reward_funcs accuracy format \
