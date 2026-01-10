@@ -41,7 +41,7 @@ swift rlhf \
 --dataset dpo_data2.json \
 --split_dataset_ratio 0.01 \
 --torch_dtype bfloat16 \
---num_train_epochs 2 \
+--num_train_epochs 10 \
 --per_device_train_batch_size 8 \
 --per_device_eval_batch_size 8 \
 --learning_rate 1e-4 \
@@ -51,7 +51,7 @@ swift rlhf \
 --gradient_accumulation_steps 8 \
 --eval_steps 1 \
 --save_steps 1 \
---save_total_limit 2 \
+--save_total_limit 20 \
 --logging_steps 5 \
 --max_length 2048 \
 --output_dir output/dpo-qwen3_0.6B \
